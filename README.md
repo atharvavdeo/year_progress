@@ -4,7 +4,7 @@ A minimal, aesthetic webpage that shows how much of the year is left using a typ
 
 ##  Live Preview
 
-[ View Source on GitHub](https://github.com/atharvavdeo/year_progress/tree/main)
+[ View Live](https://atharvavdeo.github.io/year_progress/)
 
 ---
 
