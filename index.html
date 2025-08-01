@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Left</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #0D0D0D;
+            color: #F7E7CE;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 800px;
+            padding: 2rem;
+            width: 100%;
+        }
+
+        .percentage-text {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 300;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .typing-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1em;
+            background: #F7E7CE;
+            margin-left: 4px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .quote-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+            margin-bottom: 4rem;
+        }
+
+        .quote-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .quote-text {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 400;
+            font-style: italic;
+            line-height: 1.4;
+            margin-bottom: 1rem;
+        }
+
+        .input-section {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+        }
+
+        .input-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .goal-input {
+            width: 100%;
+            max-width: 500px;
+            padding: 1.5rem 2rem;
+            font-size: 1.2rem;
+            background: transparent;
+            border: 2px solid #F7E7CE;
+            border-radius: 50px;
+            color: #F7E7CE;
+            text-align: center;
+            outline: none;
+            box-shadow: 0 0 20px rgba(247, 231, 206, 0.3);
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .goal-input:focus {
+            box-shadow: 0 0 30px rgba(247, 231, 206, 0.6);
+            transform: scale(1.02);
+        }
+
+        .goal-input::placeholder {
+            color: rgba(247, 231, 206, 0.6);
+        }
+
+        .fade-out {
+            opacity: 0;
+            transform: scale(0.95);
+            transition: all 1s ease;
+        }
+
+        .start-now {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 600;
+            opacity: 0;
+            transform: scale(0.8);
+            animation: fadeInScale 2s ease forwards;
+        }
+
+        @keyframes fadeInScale {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .goal-input {
+                padding: 1.2rem 1.5rem;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="mainContainer">
+        <div id="percentageSection">
+            <h1 class="percentage-text" id="percentageText"></h1>
+        </div>
+        
+        <div class="quote-section" id="quoteSection">
+            <p class="quote-text" id="quoteText"></p>
+        </div>
+        
+        <div class="input-section" id="inputSection">
+            <input 
+                type="text" 
+                class="goal-input" 
+                id="goalInput" 
+                placeholder="Write one thing you'll commit to..."
+                maxlength="100"
+            >
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
